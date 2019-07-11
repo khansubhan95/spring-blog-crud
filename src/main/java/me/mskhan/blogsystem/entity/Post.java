@@ -21,7 +21,7 @@ public class Post {
     private Date date = new Date();
 
 //    @ManyToOne(optional = false)
-//    private User author;
+//    private UserRepository author;
 
     public Post() {
     }
@@ -71,11 +71,11 @@ public class Post {
         this.date = date;
     }
 
-//    public User getAuthor() {
+//    public UserRepository getAuthor() {
 //        return author;
 //    }
 //
-//    public void setAuthor(User author) {
+//    public void setAuthor(UserRepository author) {
 //        this.author = author;
 //    }
 
