@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Post</title>
+
+    <meta th:replace="fragments/static.html :: bootstrap">
+
+
+</head>
+<body>
+<div th:replace="fragments/nav.html :: navbar"></div>
+<div class="container">
+    <h1 th:text="${post.title}" />
+
+<div>
+    <small th:text="'Published on ' + ${#dates.format(post.date, 'dd-MMM-yyyy')}" />
+
+    <hr>
+
+    <p th:text="${post.content}" />
+</div>
+</div>
+
+
+</body>
+</html>
