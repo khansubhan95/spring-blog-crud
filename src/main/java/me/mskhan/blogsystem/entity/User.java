@@ -7,6 +7,7 @@ import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.Set;
 
 @Entity
 @Table(name = "user")
@@ -34,6 +35,9 @@ public class User {
     @NotBlank
     @Column(name = "email")
     private String email;
+
+    @OneToMany
+    private Set<Post> posts;
 
     @PostConstruct
     public void printObj() {
@@ -106,5 +110,13 @@ public class User {
 
     public void setMatchingPassword(String matchingPassword) {
         this.matchingPassword = matchingPassword;
+    }
+
+    public Set<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(Set<Post> posts) {
+        this.posts = posts;
     }
 }

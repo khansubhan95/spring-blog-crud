@@ -1,5 +1,7 @@
 package me.mskhan.blogsystem.entity;
 
+import me.mskhan.blogsystem.dao.UserRepository;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -20,8 +22,8 @@ public class Post {
     @Column(name = "date")
     private Date date = new Date();
 
-//    @ManyToOne(optional = false)
-//    private UserRepository author;
+    @ManyToOne
+    private User author;
 
     public Post() {
     }
@@ -71,13 +73,13 @@ public class Post {
         this.date = date;
     }
 
-//    public UserRepository getAuthor() {
-//        return author;
-//    }
-//
-//    public void setAuthor(UserRepository author) {
-//        this.author = author;
-//    }
+    public User getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(User author) {
+        this.author = author;
+    }
 
     @Override
     public String toString() {
