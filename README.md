@@ -1,6 +1,6 @@
 # Spring CRUD Blog
 
-A blog with CRUD features made using Spring MVC. Access to features is provided only for authenticated users. Tools/Frameworks used:
+A blog system with CRUD features made using Spring MVC. Access to features is provided only for authenticated users. Tools/Frameworks used:
 
 - Spring MVC
 - Spring Security(for user authentication)
