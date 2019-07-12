@@ -2,6 +2,7 @@ package me.mskhan.blogsystem.service;
 
 import me.mskhan.blogsystem.dao.PostRepository;
 import me.mskhan.blogsystem.entity.Post;
+import me.mskhan.blogsystem.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -39,5 +40,10 @@ public class PostServiceImpl implements PostService {
     @Override
     public void deleteById(int theId) {
         postRepository.deleteById(theId);
+    }
+
+    @Override
+    public List<Post> findByUser(User theUser) {
+        return postRepository.findAllByAuthorOrderByDateDesc(theUser);
     }
 }

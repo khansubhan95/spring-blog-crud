@@ -11,7 +11,9 @@
 <body>
 <div th:replace="fragments/nav.html :: navbar"></div>
 <div class="container">
+    <p th:text="'You are logged in as ' + ${#authentication.getPrincipal().getUsername()}"></p>
     <h1 th:text="${post.title}" />
+    <small>Written by <a th:href="@{/users(userId=${post.author.getUsername()})}" th:text="${post.author.getUsername()}"></a></small>
 
 <div>
     <small th:text="'Published on ' + ${#dates.format(post.date, 'dd-MMM-yyyy')}" />

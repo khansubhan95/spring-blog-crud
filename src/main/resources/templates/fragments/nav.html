@@ -18,7 +18,11 @@
       </li>
 
       <li sec:authorize="isAuthenticated()" class="nav-item active">
-        <a class="nav-link" href="#">My Posts</a>
+        <a class="nav-link" th:href="@{/posts/myPosts(userId=${#authentication.getPrincipal().getUsername()})}">My Posts</a>
+      </li>
+
+      <li sec:authorize="isAuthenticated()" class="nav-item active">
+        <a class="nav-link" th:href="@{/users}">Users</a>
       </li>
 
       <form sec:authorize="isAuthenticated()" action="#" th:action="@{/logout}" method="POST"><button class="btn btn-warning" style="color: rgba(0,0,0,.9);" type="submit">Logout</button></form>

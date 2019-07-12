@@ -22,7 +22,7 @@ public class Post {
     @Column(name = "date")
     private Date date = new Date();
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private User author;
 
     public Post() {

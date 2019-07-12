@@ -7,6 +7,7 @@ import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -36,8 +37,8 @@ public class User {
     @Column(name = "email")
     private String email;
 
-    @OneToMany
-    private Set<Post> posts;
+    @OneToMany(mappedBy = "author")
+    private Set<Post> posts = new HashSet<>();
 
     @PostConstruct
     public void printObj() {

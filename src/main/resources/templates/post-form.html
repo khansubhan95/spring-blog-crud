@@ -12,7 +12,8 @@
 <div th:replace="fragments/nav.html :: navbar"></div>
 
 <div class="container">
-    <p class="h4 mb-4">Create a new post</p>
+    <p th:text="'You are logged in as ' + ${#authentication.getPrincipal().getUsername()}"></p>
+    <p class="h4 mb-4">Save post</p>
 
 <form action="#" th:action="@{/posts/save}" th:object="${post}" method="POST">
 

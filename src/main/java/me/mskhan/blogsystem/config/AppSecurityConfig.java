@@ -27,13 +27,6 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        @SuppressWarnings("deprecation") User.UserBuilder users = User.withDefaultPasswordEncoder();
-//
-//        auth.inMemoryAuthentication()
-//                .withUser(users.username("john").password("test123").roles("ANONYMOUS"))
-//                .withUser(users.username("mary").password("test123").roles("ANONYMOUS"))
-//                .withUser(users.username("susan").password("test123").roles("ANONYMOUS"));
-
         auth.authenticationProvider(authenticationProvider());
 ;    }
 
@@ -52,7 +45,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/showRegistrationForm").permitAll
                 ()
-                .antMatchers("/posts/**")
+                .antMatchers("/posts/**", "/users/**")
                 .authenticated()
                 .and()
                 .formLogin()

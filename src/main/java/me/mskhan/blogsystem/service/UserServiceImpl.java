@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -39,6 +40,11 @@ public class UserServiceImpl implements UserService {
     public void save(User theUser) {
         theUser.setPassword(bCryptPasswordEncoder.encode(theUser.getPassword()));
         userRepository.save(theUser);
+    }
+
+    @Override
+    public List<User> findAllByUsername() {
+        return userRepository.findAllByOrderByUsernameAsc();
     }
 
     @Override
