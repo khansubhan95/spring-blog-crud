@@ -14,7 +14,7 @@
       </li>
 
       <li sec:authorize="isAnonymous()" class="nav-item active">
-        <a class="nav-link" href="#">Register</a>
+        <a class="nav-link" th:href="@{/showRegistrationForm}">Register</a>
       </li>
 
       <li sec:authorize="isAuthenticated()" class="nav-item active">

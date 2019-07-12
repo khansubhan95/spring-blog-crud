@@ -20,7 +20,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserService userService;
 
-    @Autowired
+    @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
@@ -39,8 +39,21 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+//        http.authorizeRequests()
+//                .anyRequest().authenticated()
+//                .and()
+//                .formLogin()
+//                .loginPage("/showFormForLogin")
+//                .loginProcessingUrl("/authenticateTheUser")
+//                .permitAll()
+//                .and()
+//                .logout().permitAll();
+
         http.authorizeRequests()
-                .anyRequest().authenticated()
+                .antMatchers("/showRegistrationForm").permitAll
+                ()
+                .antMatchers("/posts/**")
+                .authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/showFormForLogin")

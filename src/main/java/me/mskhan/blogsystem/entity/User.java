@@ -1,6 +1,12 @@
 package me.mskhan.blogsystem.entity;
 
+import org.springframework.validation.annotation.Validated;
+
+import javax.annotation.PostConstruct;
 import javax.persistence.*;
+import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "user")
@@ -9,17 +15,30 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @NotBlank
     @Column(name = "username")
     private String username;
 
+    @NotBlank
     @Column(name = "password")
     private String password;
 
+    @NotBlank
+    @Transient
+    private String matchingPassword;
+
+    @NotBlank
     @Column(name = "name")
     private String name;
 
+    @NotBlank
     @Column(name = "email")
     private String email;
+
+    @PostConstruct
+    public void printObj() {
+        System.out.println("Username is "+this.getUsername());
+    }
 
     public User() {
     }
@@ -79,5 +98,13 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getMatchingPassword() {
+        return matchingPassword;
+    }
+
+    public void setMatchingPassword(String matchingPassword) {
+        this.matchingPassword = matchingPassword;
     }
 }

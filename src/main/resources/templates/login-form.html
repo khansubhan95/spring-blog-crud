@@ -12,32 +12,19 @@
 
 <div class="container">
 
-<!--    <i class="failed" th:if="${(param.error != null)}">-->
-<!--        Sorry! You entered wrong username/password-->
-<!--    </i>-->
-
     <div class="alert alert-danger" role="alert" th:if="${(param.error != null)}">
         Sorry! You entered invalid username/password
     </div>
-
-<!--    <i class="failed" th:if="${(param.logout != null)}">-->
-<!--        Successfully logged out-->
-<!--    </i>-->
 
     <div class="alert alert-success" role="alert" th:if="${(param.logout != null)}">
         Successfully logged out.
     </div>
 
+    <div class="alert alert-success" role="alert" th:if="${(registrationSuccess != null)}" th:text="${registrationSuccess}">
+    </div>
+
     <h2>Login</h2>
 
-<!--    <form action="#" th:action="@{/authenticateTheUser}" method="POST">-->
-<!--    Username: <input type="text" name="username">-->
-<!--    <br>-->
-<!--    Password: <input type="password" name="password">-->
-<!--    <br>-->
-
-<!--    <input type="submit" value="Log In">-->
-<!--</form>-->
 
     <form action="#" th:action="@{/authenticateTheUser}" method="POST">
         <div class="form-group">
