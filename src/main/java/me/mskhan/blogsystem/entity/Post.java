@@ -3,6 +3,7 @@ package me.mskhan.blogsystem.entity;
 import me.mskhan.blogsystem.dao.UserRepository;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.Date;
 
 @Entity
@@ -13,9 +14,11 @@ public class Post {
     @Column(name = "id")
     private int id;
 
+    @NotBlank
     @Column(name = "title")
     private String title;
 
+    @NotBlank
     @Column(name = "content")
     private String content;
 

@@ -10,8 +10,10 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -49,7 +51,7 @@ public class BlogController {
     }
 
     @PostMapping("/save")
-    public String save(@ModelAttribute("post") Post thePost) {
+    public String save(@Valid @ModelAttribute("post") Post thePost, BindingResult theBindingResult) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String theUsername = auth.getName();
 
@@ -60,6 +62,11 @@ public class BlogController {
                 return "redirect:/posts";
             }
         }
+
+        if (theBindingResult.hasErrors()) {
+            return "post-form";
+        }
+
         User theUser = userService.findByUsername(theUsername);
         thePost.setAuthor(theUser);
         Set<Post> tempPosts = theUser.getPosts();
